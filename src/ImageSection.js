@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-
-// complete axios call in here. 
 
 class ImageSection extends Component {
     
     render() {
         return(
-            <div className="imageSection">
-
+            <div className="ImageSection">
+                {/* { console.log(this.state.resultArray) } */}
             </div>
         )
     }
