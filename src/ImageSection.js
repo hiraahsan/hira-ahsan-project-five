@@ -3,7 +3,6 @@ import axios from 'axios';
 import firebase from 'firebase/app';
 import Images from './Images';
 import StorySection from './StorySection';
-import UserInput from './UserInput';
 
 
 class ImageSection extends Component {
@@ -17,43 +16,28 @@ class ImageSection extends Component {
             data: [],
             mappedArray: [],
             imageArray: [],
-            displayData: '',
-            handleClick: '',
             imageToAppend: '',
             userInput: '',
             dbRef: firebase.database().ref(),
-            // handleChange: ''
         }
     }
 
     componentDidMount() {
         axios.get(`${this.state.apiUrl}/?key=${this.state.apiKey}&q=${this.state.q}`)
             .then((result) => {
-
-                // console.log(result.data.hits);
                 this.setState({
                     data: result.data.hits,
-                    // map over the objects for taking out the relevant items. 
                 })
-
-                console.log(this.state.data);
-
-                // have to set it at a certain position in the code. 
                 this.setState({
                     mappedArray: this.state.data.map((response) => {
-                        // console.log(data.previewURL);
                         return response.previewURL;
                     })
                 })
+            }) 
 
-                this.setState({
-                    handleClick: (event) => {
-                        event.preventDefault();
-                        console.log('event', event.target);
-                    }
-                })
-            })
-        
+        // To-Do: connect app to firebase
+
+
     }
 
     
@@ -65,6 +49,8 @@ class ImageSection extends Component {
             imageToAppend: document.querySelector('input[name="radio"]:checked').value
             }
         )
+
+        // setting state for image append, change for firebase
     }
 
     handleChangeInput = (event) => {
@@ -73,18 +59,19 @@ class ImageSection extends Component {
         this.setState({
             userInput: event.target.value
         })
+
+        // setting state for user Input, change for firebase
     }
 
     handleSubmit = (event) => {
         event.preventDefault();
         console.log('event', event.target);
-
     }
-
-    
 
     render() {
         const textToAppend = this.state.userInput;
+
+        // appending text
 
         const imagesFinal = this.state.data.map( (response, i) => (
             <Images 
@@ -95,18 +82,16 @@ class ImageSection extends Component {
             />
         ))
 
+        // appending images
+
         return(
             <div className="App">
                 <div className="imageSection">
                     <section>
-                        <form onSubmit={this.handleChange}>
-                            <button type="submit">Click me!</button>
-                        </form>
                         <div className="imageContainer">
                             {imagesFinal}
                         </div>
                     </section>
-
                 </div>
 
                 <form onSubmit={this.handleSubmit}>
@@ -114,10 +99,10 @@ class ImageSection extends Component {
                     <button type="submit">Submit text here</button>
                 </form>
 
-                    <StorySection
-                        appendImg={this.state.imageToAppend}
-                        textToBeAppended={textToAppend}
-                    />
+                <StorySection
+                    appendImg={this.state.imageToAppend}
+                    textToBeAppended={textToAppend}
+                />
             </div>
         )
     }
