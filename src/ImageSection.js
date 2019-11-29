@@ -3,21 +3,24 @@ import axios from 'axios';
 import firebase from 'firebase/app';
 import Images from './Images';
 import StorySection from './StorySection';
+import UserInput from './UserInput';
 
 
 class ImageSection extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             apiKey: '14421506-770fc3d3a51ab16bab09705a9',
             apiUrl: 'https://pixabay.com/api/',
-            q: 'witches',
+            q: 'dogs',
             data: [],
             mappedArray: [],
             imageArray: [],
             displayData: '',
-            handleClickImage: '',
+            handleClick: '',
+            imageToAppend: '',
+            userInput: '',
             dbRef: firebase.database().ref(),
             // handleChange: ''
         }
@@ -42,53 +45,79 @@ class ImageSection extends Component {
                         return response.previewURL;
                     })
                 })
+
+                this.setState({
+                    handleClick: (event) => {
+                        event.preventDefault();
+                        console.log('event', event.target);
+                    }
+                })
             })
+        
     }
 
-    handleChange = (event) => {
-    event.preventDefault();
-    console.log('event', event.target)
-    console.log(this.state.mappedArray);
+    
 
-    this.setState({
-        handleClickImage: (event) => {
-            console.log('you clicked me!', event)
-        }
-    })
+    handleChange = () => {
+        console.log(document.querySelector('input[name="radio"]:checked').value)
 
-    // this.state.handleClickImage = (event) => {
-    //     console.log('you clicked me!', event)
-    // }
-
-    for (let i = 0; i < this.state.mappedArray.length; i++) {
-    //   this.displayData.push(<div id="display-data"><img src={this.state.mappedArray[i]}></img></div>);
+        this.setState({
+            imageToAppend: document.querySelector('input[name="radio"]:checked').value
+            }
+        )
     }
+
+    handleChangeInput = (event) => {
+        console.log('event', event.target.value);
+
+        this.setState({
+            userInput: event.target.value
+        })
     }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        console.log('event', event.target);
+
+    }
+
+    
+
     render() {
-        console.log(this.state.data);
+        const textToAppend = this.state.userInput;
+
         const imagesFinal = this.state.data.map( (response, i) => (
-            // console.log(i)
             <Images 
             previewImg={response.webformatURL}
             linkToPage={response.pageURL}
             indexKey={i}
+            appendImages={this.handleChange}
             />
         ))
-        // for (let i = 0; i < this.state.mappedArray.length; i++) {
-        //     return <Images img={this.state.mappedArray[i]} />
-        // }
 
         return(
-            <div className="imageSection">
-                <section>
-                    <form onSubmit={this.handleChange}>
-                        <button type="submit">Click me!</button>
-                    </form>
-                    <div className="imageContainer">
-                        {imagesFinal}
-                    </div>
-                </section>
-                {/* { console.log(this.state.resultArray) } */}
+            <div className="App">
+                <div className="imageSection">
+                    <section>
+                        <form onSubmit={this.handleChange}>
+                            <button type="submit">Click me!</button>
+                        </form>
+                        <div className="imageContainer">
+                            {imagesFinal}
+                        </div>
+                    </section>
+
+                </div>
+
+                <form onSubmit={this.handleSubmit}>
+                    <textarea onChange={this.handleChangeInput} name="" id=""></textarea>
+                    <button type="submit">Submit text here</button>
+                </form>
+
+                    <StorySection
+                        appendImg={this.state.imageToAppend}
+                        textToBeAppended={textToAppend}
+                    />
             </div>
         )
     }
