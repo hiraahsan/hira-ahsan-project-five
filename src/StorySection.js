@@ -2,15 +2,13 @@ import React from 'react';
 
 const StorySection = (props) => {
     return(
-        <div className="storytime">
-            <div className="imageStored">
-                <img src={props.appendImg}></img>
+        <>
+        {/* // <div className="storytime"> */}
+        <div className="storyContainer">
+            <p key={props.key} id={props.storedTextId}>{props.storedText}</p>
             </div>
-
-            <div className="userText">
-                <p>{props.textToBeAppended}</p>
-            </div>
-        </div>
+        {/* // </div> */}
+        </>
     )
 }
 
