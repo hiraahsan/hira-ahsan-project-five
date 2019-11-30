@@ -10,11 +10,12 @@
         justify-content: space-between;
         align-items: center;
         
-    img {
+    
+    }
+}
+img {
         max-width: 100%;
         display: block;
-    }
-    }
 }
 
 textarea {
@@ -37,5 +38,23 @@ textarea {
             margin: 0;
             padding: 0;
         }   
+    }
+}
+
+.splitSection {
+    display: flex;
+
+    .imageSplit {
+        width: 50%;
+        .imageContainer{
+            height: 400px;
+        }
+    }
+
+    .textSplit {
+        width: 50%;
+        .storyContainer{
+            height: 400px;
+        }
     }
 }
