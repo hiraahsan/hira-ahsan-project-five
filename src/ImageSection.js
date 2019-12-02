@@ -6,11 +6,11 @@ import StoredImages from './StoredImages';
 import StorySection from './StorySection';
 import Header from './Header';
 import InputSearch from './InputSearch';
+import Details from './Details';
 
 // To-Do: filter the selections by their height/widths?? and image types
 
 class ImageSection extends Component {
-
     constructor() {
         super();
         this.state = {
@@ -86,7 +86,6 @@ class ImageSection extends Component {
             imageToAppend: document.querySelector('input[name="radio"]:checked').value
             }
         )
-        // setting state for image append, change for firebase
     }
 
     handleSubmitImage = (event) => {
@@ -94,16 +93,12 @@ class ImageSection extends Component {
         this.setState({
             isButtonDisabled: true
         })
-
-        // console.log('event', event.target.value);
     }
 
     handleChangeInput = (event) => {
         this.setState({
             userInput: event.target.value
         })
-
-        // setting state for user Input, change for firebase
     }
 
     handleSearchImages = (event) => {
@@ -132,7 +127,6 @@ class ImageSection extends Component {
             })
         }
             callApi();
-        // this.state.runApi();
     }
 
     handleSubmit = (event) => {
@@ -140,8 +134,6 @@ class ImageSection extends Component {
         // console.log('event', event.target);
 
         // and if statement, if both radio button is selected and text area is filled, the data will be pushed then
-
-        // let radioBtn = document.getElementsByName('radio');
 
         if (this.state.userInput !== '') {
 
@@ -195,7 +187,7 @@ class ImageSection extends Component {
         return(
             <div className="App">
             <Header />
-
+            <Details />
                 <InputSearch handleSearchImages={this.handleSearchImages} handleSubmitSearch={this.handleSubmitSearch}/>
 
                 <form onSubmit={this.handleSubmit}>

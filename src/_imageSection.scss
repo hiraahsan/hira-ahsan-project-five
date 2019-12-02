@@ -4,7 +4,6 @@
 }
 
 .imageSection {
-    
     overflow: scroll;
     width: 90%;
     height: 500px;  
@@ -19,8 +18,6 @@
         .miniContainers {
             margin: 0 20px;
         }
-        
-    
     }
 }
 img {
@@ -57,7 +54,10 @@ textarea {
     .imageSplit {
         width: 50%;
         .imageContainer{
-            height: 400px;
+
+            img{
+                max-height: 400px;
+            }
         }
     }
 
@@ -69,3 +69,7 @@ textarea {
     }
 }
 
+button {
+    border: none;
+    background: inherit;
+}

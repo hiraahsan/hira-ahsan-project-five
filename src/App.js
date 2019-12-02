@@ -4,7 +4,8 @@ import firebase from './firebase';
 // import ImageSection from './ImageSection';
 // import axios from 'axios';
 import './App.scss';
-import ImageSection from './ImageSection';
+// import ImageSection from './ImageSection';
+import UnsplashCall from './UnsplashCall';
 
 class App extends Component {
 
@@ -19,7 +20,7 @@ class App extends Component {
 
     return (
       <div className="App wrapper">
-        <ImageSection />
+        <UnsplashCall />
         {/* Insert instructions here
         as pop up?
         or <details> */}
