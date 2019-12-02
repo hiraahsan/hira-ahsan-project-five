@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import firebase from './firebase';
-import ImageSection from './ImageSection';
+import SecondApiCall from './SecondApiCall';
+// import ImageSection from './ImageSection';
 // import axios from 'axios';
 import './App.scss';
 
@@ -23,11 +24,12 @@ class App extends Component {
 
         <details>
           <summary>
-            <p>Testing the details tab</p>
-            <p>Testing again</p>
+            Instructions in here
           </summary>
+          <p>Testing the details tab</p>
+          <p>Testing again</p>
         </details>
-        <ImageSection />
+        <SecondApiCall />
         {/* Insert instructions here
         as pop up?
         or <details> */}
