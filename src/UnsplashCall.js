@@ -14,7 +14,7 @@ class UnsplashCall extends Component {
         super();
         this.state = {
             apiKey: '851ca0e417e4da7927bb7094b0bb790d78758e507f353acd3aaa66d2e6e48462',
-            apiUrl: 'https://api.unsplash.com/photos/?client_id=',
+            apiUrl: 'https://api.unsplash.com',
             q: '',
             data: [],
             mappedArray: [],
@@ -36,7 +36,7 @@ class UnsplashCall extends Component {
         axios({
             "async": true,
             "crossDomain": true,
-            "url": `${this.state.apiUrl}${this.state.apiKey}`,
+            "url": `${this.state.apiUrl}/photos/?client_id=${this.state.apiKey}`,
             "method": "GET",
             params: {
                 per_page: 20,
@@ -94,7 +94,7 @@ class UnsplashCall extends Component {
     handleSubmitImage = (event) => {
         event.preventDefault();
         this.setState({
-            isButtonDisabled: true
+            isButtonDisabled: "disabled"
         })
     }
 
@@ -120,17 +120,17 @@ class UnsplashCall extends Component {
             axios({
                 "async": true,
                 "crossDomain": true,
-                "url": `${this.state.apiUrl}${this.state.apiKey}`,
+                "url": `https://api.unsplash.com/search/photos/?client_id=851ca0e417e4da7927bb7094b0bb790d78758e507f353acd3aaa66d2e6e48462&query=${this.state.inputToSearch}`,
                 "method": "GET",
                 params: {
-                    per_page: 20,
-                    order_by: "popular",
-                    query: this.state.q
+                    per_page: 20
+                    // orientation: "squarish",
+                    // query: this.state.q
                 }
             }).then((response) => {
                 console.log(response)
                 this.setState({
-                    data: response.data
+                    data: response.data.results
                 })
             })
         }
@@ -175,7 +175,7 @@ class UnsplashCall extends Component {
         ))
         
         const storedText = this.state.textArray.map((text, i) => (
-                <StoredImages
+                <StorySection
                     storedText={text.storyText}
                     storedTextId={text.storyId}
                     key={i}
@@ -231,16 +231,16 @@ class UnsplashCall extends Component {
                     <button disabled={this.isButtonDisabled} type="submit">Submit text here</button>
                 </form>
                 <div className="splitSection clearfix">
-                    {storedImages}
-                    {storedText}
+                    <div className="imageSplit">{storedImages}</div>
+                    <div className="textSplit">{storedText}</div>
                     {/* <li><img id={this.state.id} src={this.state.storedImg}></img>
                         <p id={this.state.storedTextId}>{this.state.storedText}</p>
                     </li> */}
                 </div>
-                <StorySection
-                // appendImg={this.state.imageToAppend}
-                // textToBeAppended={textToAppend}
-                />
+                {/* <StorySection */}
+                {/* // appendImg={this.state.imageToAppend} */}
+                {/* // textToBeAppended={textToAppend} */}
+                {/* // /> */}
             </div>
         )
     }
