@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/hira-ahsan-project-five/static/css/main.bcc3c498.chunk.css",
+    "main.js": "/hira-ahsan-project-five/static/js/main.f307786e.chunk.js",
+    "main.js.map": "/hira-ahsan-project-five/static/js/main.f307786e.chunk.js.map",
+    "runtime-main.js": "/hira-ahsan-project-five/static/js/runtime-main.7895fda1.js",
+    "runtime-main.js.map": "/hira-ahsan-project-five/static/js/runtime-main.7895fda1.js.map",
+    "static/js/2.0c91c421.chunk.js": "/hira-ahsan-project-five/static/js/2.0c91c421.chunk.js",
+    "static/js/2.0c91c421.chunk.js.map": "/hira-ahsan-project-five/static/js/2.0c91c421.chunk.js.map",
+    "index.html": "/hira-ahsan-project-five/index.html",
+    "precache-manifest.527fed3ca2582636351ee0f82676f862.js": "/hira-ahsan-project-five/precache-manifest.527fed3ca2582636351ee0f82676f862.js",
+    "service-worker.js": "/hira-ahsan-project-five/service-worker.js",
+    "static/css/main.bcc3c498.chunk.css.map": "/hira-ahsan-project-five/static/css/main.bcc3c498.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7895fda1.js",
+    "static/js/2.0c91c421.chunk.js",
+    "static/css/main.bcc3c498.chunk.css",
+    "static/js/main.f307786e.chunk.js"
+  ]
+}
