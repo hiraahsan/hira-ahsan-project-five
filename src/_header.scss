@@ -10,3 +10,21 @@ header {
     background-repeat: no-repeat;
     background-position: center;
 }
+
+.header-section {
+    display: flex;
+}
+
+.oneThirdSection {
+    width: 33%;
+    // position: fixed;
+    // height: 100vh;
+    background: grey;
+    overflow: scroll;
+}
+
+.theRest {
+    width: 67%;
+    // position: fixed;
+
+}

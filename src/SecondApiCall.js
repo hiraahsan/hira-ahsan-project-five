@@ -58,7 +58,10 @@ class SecondApiCall extends Component {
             },
             "processData": false,
             "mimeType": "multipart/form-data",
-            "contentType": false
+            "contentType": false,
+            headers: {
+                "SameSite": "None"
+            }
         }).then((response) => {
             console.log(response.data.data);
 
@@ -68,7 +71,7 @@ class SecondApiCall extends Component {
 
             this.setState({
                 mappedArray: this.state.data.map( (response) => {
-                    return response.link
+                        return response.link
                 })
             })
         });

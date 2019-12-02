@@ -6,7 +6,7 @@ const Images = (props) => {
             {/* <form onSubmit={props}> */}
             <input type="radio" name="radio" id={props.indexKey} value={props.previewImg} onChange={() => props.appendImages(props.handleChange)}/>
             <label htmlFor={props.indexKey}>
-                <img src={props.previewImg}/>
+                <img SameSite="None" src={props.previewImg}/>
             </label>
             {/* <button type="submit">Submit Image</button> */}
             <a href={props.linkToPage}>Link to full size</a>

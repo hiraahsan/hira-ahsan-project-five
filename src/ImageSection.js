@@ -4,6 +4,8 @@ import firebase from 'firebase/app';
 import Images from './Images';
 import StoredImages from './StoredImages';
 import StorySection from './StorySection';
+import Header from './Header';
+import InputSearch from './InputSearch';
 
 // To-Do: filter the selections by their height/widths?? and image types
 
@@ -14,13 +16,15 @@ class ImageSection extends Component {
         this.state = {
             apiKey: '14421506-770fc3d3a51ab16bab09705a9',
             apiUrl: 'https://pixabay.com/api/',
-            q: 'dogs',
+            q: '',
             data: [],
             mappedArray: [],
             imageArray: [],
             textArray: [],
+            runApi: [],
             imageToAppend: '',
             userInput: '',
+            inputToSearch: '',
             mappedDbref: '',
             isButtonDisabled: false,
             dbRefImages: firebase.database().ref('/images'),
@@ -30,7 +34,7 @@ class ImageSection extends Component {
 
     componentDidMount() {
 
-        axios.get(`${this.state.apiUrl}/?key=${this.state.apiKey}&q=${this.state.q}`)
+            axios.get(`${this.state.apiUrl}/?key=${this.state.apiKey}&q=${this.state.q}`)
             .then((result) => {
                 this.setState({
                     data: result.data.hits,
@@ -39,11 +43,10 @@ class ImageSection extends Component {
                     mappedArray: this.state.data.map((response) => {
                         return response.previewURL;
                     })
-                })
-            }) 
+            })
+        }) 
         
         this.state.dbRefImages.on('value', (snapshot) => {
-            // console.log(snapshot.val());
             const images = snapshot.val();
             const newImages = []
 
@@ -53,7 +56,6 @@ class ImageSection extends Component {
                     imageUrl: images[key]
                 }
                 newImages.push(individualImages);
-                // console.log(newImages);
             }
 
             this.setState({
@@ -62,7 +64,6 @@ class ImageSection extends Component {
         })
 
         this.state.dbRefText.on('value', (snapshot) => {
-            // console.log(snapshot.val());
             const stories = snapshot.val();
             const newStories = []
 
@@ -72,7 +73,6 @@ class ImageSection extends Component {
                     storyText: stories[key]
                 }
                 newStories.push(individualStories);
-                // console.log(newStories);
             }
 
             this.setState({
@@ -82,16 +82,10 @@ class ImageSection extends Component {
     }
 
     handleChange = () => {
-        // console.log(document.querySelector('input[name="radio"]:checked').value)
-
         this.setState({
             imageToAppend: document.querySelector('input[name="radio"]:checked').value
             }
         )
-
-
-        // add a submit button for pushing images
-
         // setting state for image append, change for firebase
     }
 
@@ -110,6 +104,35 @@ class ImageSection extends Component {
         })
 
         // setting state for user Input, change for firebase
+    }
+
+    handleSearchImages = (event) => {
+        this.setState({
+            inputToSearch: event.target.value
+        })
+    }
+
+    handleSubmitSearch = (event) => {
+        event.preventDefault();
+        this.setState({
+            q: this.state.inputToSearch
+        })
+
+        let callApi = () => {
+            axios.get(`${this.state.apiUrl}/?key=${this.state.apiKey}&q=${this.state.q}`)
+            .then((result) => {
+                this.setState({
+                    data: result.data.hits
+                })
+                this.setState({
+                    mappedArray: this.state.data.map((response) => {
+                        return response.previewURL;
+                    })
+                })
+            })
+        }
+            callApi();
+        // this.state.runApi();
     }
 
     handleSubmit = (event) => {
@@ -171,6 +194,10 @@ class ImageSection extends Component {
 
         return(
             <div className="App">
+            <Header />
+
+                <InputSearch handleSearchImages={this.handleSearchImages} handleSubmitSearch={this.handleSubmitSearch}/>
+
                 <form onSubmit={this.handleSubmit}>
                 <div className="imageSection">
                     <section>
@@ -181,7 +208,6 @@ class ImageSection extends Component {
                     </section>
 
                 </div>
-                    {/* <button type="submit">Select Image</button> */}
 
                     <textarea onChange={this.handleChangeInput} name="" id=""></textarea>
                     <button disabled={this.isButtonDisabled} type="submit">Submit text here</button>
