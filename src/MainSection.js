@@ -127,6 +127,7 @@ class MainSection extends Component {
                 })
             }
             callApi();
+            // this.props.valueChange= "";
             this.setState({
                 inputToSearch: ''
             })

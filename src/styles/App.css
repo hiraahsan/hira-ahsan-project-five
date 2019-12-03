@@ -513,21 +513,22 @@ textarea {
 
 .splitSection .imageSplit {
   width: calc(50% - 40px);
-  margin: 0 20px;
+  padding: 0 20px;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 @media (max-width: 599px) {
   .splitSection .imageSplit {
-    width: 90%;
-    margin: 0 auto;
+    width: 100%;
   }
 }
 
 .splitSection .imageSplit img {
   margin: 20px 0;
-  max-height: 400px;
+  max-height: 360px;
 }
 
 .splitSection .storedImageSection {
@@ -679,7 +680,17 @@ html {
   background: linear-gradient(45deg, #A8D0E6, #c2c2c2);
   font-family: 'Crimson Pro', serif;
   font-size: 2.5rem;
+
+  
 }
+
+@media (max-width: 600px) {
+
+  .App {
+    font-size: 2rem;
+  }
+    
+  }
 
 .App-header {
   background-color: #282c34;
