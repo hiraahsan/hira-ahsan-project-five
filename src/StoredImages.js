@@ -5,7 +5,7 @@ const StoredImages = (props) => {
         <>
         <div className="storedImageSection">
             <img alt="" id={props.id} src={props.storedImg}></img>
-            </div>
+        </div>
         </>
     )
 }

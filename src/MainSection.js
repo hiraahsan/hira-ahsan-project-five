@@ -91,13 +91,6 @@ class MainSection extends Component {
         })
     }
 
-    handleSubmitImage = (event) => {
-        event.preventDefault();
-        this.setState({
-            isButtonDisabled: "disabled"
-        })
-    }
-
     handleChangeInput = (event) => {
         this.setState({
             userInput: event.target.value
@@ -203,19 +196,9 @@ class MainSection extends Component {
             <div className="App">
 
                 <div className="header-section">
-                    <div className="oneThirdSection">
-                        {this.state.imageArray.map((image, i) => (
-                        <a href={image.imageId}><img alt="" src={image.imageUrl}></img></a>
-                        ))}
-                    </div>
-
-                    <div className="theRest">
-
                         <h1>Writer's Block</h1>
 
                         <Svg />
-
-                    </div>
                 </div>
 
                 <Details />
