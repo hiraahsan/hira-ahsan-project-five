@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/hira-ahsan-project-five/precache-manifest.43c5c48666f933303f9a0d7f53c0cec6.js"
+  "/hira-ahsan-project-five/precache-manifest.ec4a89b01f511097a971339b23019e77.js"
 );
 
 self.addEventListener('message', (event) => {
