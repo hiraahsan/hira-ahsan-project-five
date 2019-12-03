@@ -4,7 +4,7 @@ import firebase from 'firebase/app';
 import Images from './Images';
 import StoredImages from './StoredImages';
 import StorySection from './StorySection';
-import Header from './Header';
+// import Header from './Header';
 import InputSearch from './InputSearch';
 
 // To-Do: filter the selections by their height/widths?? and image types
@@ -47,6 +47,8 @@ class UnsplashCall extends Component {
             this.setState({
                 data: response.data
             })
+        }).catch(error => {
+            console.log(error);
         })
 
         this.state.dbRefImages.on('value', (snapshot) => {
@@ -85,10 +87,13 @@ class UnsplashCall extends Component {
     }
 
     handleChange = () => {
+
         this.setState({
-            imageToAppend: document.querySelector('input[name="radio"]:checked').value
+            imageToAppend: document.querySelector('input[name="radio"]:checked').value,
+            idOfImage: document.querySelector('input[name="radio"]:checked').id
         }
         )
+
     }
 
     handleSubmitImage = (event) => {
@@ -112,6 +117,7 @@ class UnsplashCall extends Component {
 
     handleSubmitSearch = (event) => {
         event.preventDefault();
+        console.log(event)
         this.setState({
             q: this.state.inputToSearch
         })
@@ -123,8 +129,8 @@ class UnsplashCall extends Component {
                 "url": `https://api.unsplash.com/search/photos/?client_id=851ca0e417e4da7927bb7094b0bb790d78758e507f353acd3aaa66d2e6e48462&query=${this.state.inputToSearch}`,
                 "method": "GET",
                 params: {
-                    per_page: 20
-                    // orientation: "squarish",
+                    per_page: 20,
+                    // orientation: "squarish"
                     // query: this.state.q
                 }
             }).then((response) => {
@@ -132,6 +138,8 @@ class UnsplashCall extends Component {
                 this.setState({
                     data: response.data.results
                 })
+            }).catch(error => {
+                console.log(error);
             })
         }
         callApi();
@@ -185,8 +193,8 @@ class UnsplashCall extends Component {
 
         const imagesFinal = this.state.data.map((response, i) => (
             <Images
-                previewImg={response.urls.thumb}
-                linkToPage={response.pageURL}
+                previewImg={response.urls.small}
+                linkToPage={response.links.html}
                 indexKey={i}
                 alt={response.alt_description}
                 appendImages={this.handleChange}
@@ -197,12 +205,12 @@ class UnsplashCall extends Component {
 
         return (
             <div className="App">
-                {/* {storedPreview} */}
-                {/* <Header /> */}
 
                 <div className="header-section">
                     <div className="oneThirdSection">
-                        <img src={this.state.previewImg} />
+                        {this.state.imageArray.map((image, i) => (
+                        <a href={image.imageId}><img src={image.imageUrl}></img></a>
+                        ))}
                     </div>
 
                     <div className="theRest">
@@ -211,8 +219,6 @@ class UnsplashCall extends Component {
                         </header>
                     </div>
                 </div>
-                {/* <Header {this.storedPreview} */}
-                {/* /> */}
 
                 <InputSearch handleSearchImages={this.handleSearchImages} handleSubmitSearch={this.handleSubmitSearch} />
 
@@ -226,9 +232,10 @@ class UnsplashCall extends Component {
                         </section>
 
                     </div>
-
-                    <textarea onChange={this.handleChangeInput} name="" id=""></textarea>
-                    <button disabled={this.isButtonDisabled} type="submit">Submit text here</button>
+                    <div className="userInputSection">
+                        <textarea onChange={this.handleChangeInput} name="" id=""></textarea>
+                        <button disabled={this.state.isButtonDisabled} type="submit">Submit text here</button>
+                    </div>
                 </form>
                 <div className="splitSection clearfix">
                     <div className="imageSplit">{storedImages}</div>

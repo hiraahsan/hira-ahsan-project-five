@@ -200,9 +200,10 @@ class ImageSection extends Component {
                     </section>
 
                 </div>
-
+                <div className="userInputSection">
                     <textarea onChange={this.handleChangeInput} name="" id=""></textarea>
                     <button disabled={this.isButtonDisabled} type="submit">Submit text here</button>
+                </div>
                 </form>
                 <div className="splitSection clearfix">
                     <div className="imageSplit">{storedImages}</div>

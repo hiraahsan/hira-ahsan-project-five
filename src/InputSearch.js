@@ -2,9 +2,9 @@ import React from 'react';
 
 const InputSearch = (props) => {
     return(
-        <form onSubmit={props.handleSubmitSearch}>
+        <form className="searchForm" onSubmit={props.handleSubmitSearch}>
             <input onChange={props.handleSearchImages} type="text"/>
-            <button type="submit">Search for images</button>
+            <button onSubmit={props.handleSubmitSearch} type="submit">Search for images</button>
         </form>
     )
 }

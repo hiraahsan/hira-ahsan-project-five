@@ -3,7 +3,7 @@ import firebase from './firebase';
 // import SecondApiCall from './SecondApiCall';
 // import ImageSection from './ImageSection';
 // import axios from 'axios';
-import './App.scss';
+import './styles/App.scss';
 // import ImageSection from './ImageSection';
 import UnsplashCall from './UnsplashCall';
 

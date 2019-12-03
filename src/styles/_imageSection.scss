@@ -3,6 +3,10 @@
     margin: 0 auto;
 }
 
+p {
+    margin: 0;
+}
+
 .imageSection {
     overflow: scroll;
     width: 90%;
@@ -17,6 +21,10 @@
 
         .miniContainers {
             margin: 0 20px;
+
+            img {
+                max-height:450px;
+            }
         }
     }
 }
@@ -53,16 +61,23 @@ textarea {
 
     .imageSplit {
         width: 50%;
-        .imageContainer{
 
-            img{
-                max-height: 400px;
-            }
+        img{
+            margin: 20px 0;
+            max-height: 400px;
         }
+    }
+
+    .storedImageSection{
+        display: flex;
+        justify-content: center;
+        height: 400px;
+
     }
 
     .textSplit {
         width: 50%;
+        
         .storyContainer{
             height: 400px;
         }
