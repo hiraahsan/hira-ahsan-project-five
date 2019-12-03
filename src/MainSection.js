@@ -10,18 +10,16 @@ import Svg from './Svg';
 
 // To-Do: filter the selections by their height/widths?? and image types
 
-class UnsplashCall extends Component {
+class MainSection extends Component {
     constructor() {
         super();
         this.state = {
             apiKey: '851ca0e417e4da7927bb7094b0bb790d78758e507f353acd3aaa66d2e6e48462',
             apiUrl: 'https://api.unsplash.com',
-            q: '',
             data: [],
             mappedArray: [],
             imageArray: [],
             textArray: [],
-            runApi: [],
             imageToAppend: '',
             userInput: '',
             inputToSearch: '',
@@ -235,7 +233,7 @@ class UnsplashCall extends Component {
 
                     </div>
                     <div className="userInputSection">
-                        <textarea onChange={this.handleChangeInput} name="" id="" maxLength="500"></textarea>
+                        <textarea onChange={this.handleChangeInput} placeholder="Start writing your story here! For example: You hear a knock on the door. You open it and you see a white haired man dressed like a wizard on your porch, in the middle of July. He says his name is Albus Dumbledore and he's come to take your daughter to a boarding school for witches and wizards." maxLength="500"></textarea>
                         <button disabled={this.state.isButtonDisabled} type="submit">Submit text here</button>
                     </div>
                 </form>
@@ -248,4 +246,4 @@ class UnsplashCall extends Component {
     }
 }
 
-export default UnsplashCall;
+export default MainSection;

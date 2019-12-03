@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import firebase from './firebase';
-// import SecondApiCall from './SecondApiCall';
-// import ImageSection from './ImageSection';
-// import axios from 'axios';
 import './styles/App.scss';
-// import ImageSection from './ImageSection';
-import UnsplashCall from './UnsplashCall';
+import MainSection from './MainSection';
 
 class App extends Component {
 
@@ -20,10 +16,7 @@ class App extends Component {
 
     return (
       <div className="App wrapper">
-        <UnsplashCall />
-        {/* Insert instructions here
-        as pop up?
-        or <details> */}
+        <MainSection />
         {/* add favicon */}
       </div>
     );

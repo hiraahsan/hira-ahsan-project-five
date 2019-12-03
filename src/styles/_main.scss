@@ -12,6 +12,14 @@ input, textarea {
     
 }
 
+textarea {
+    max-width: 100%;
+
+    @include forPhone {
+        max-width: 80%;
+    }
+}
+
 details {
     margin-top: 30px;
 

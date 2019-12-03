@@ -1,5 +1,5 @@
 .wrapper {
-    max-width: 1200px;
+    max-width: 1500px;
     margin: 0 auto;
 }
 
@@ -8,7 +8,7 @@ p {
 }
 
 .imageSection {
-    overflow: scroll;
+    overflow: overlay;
     width: 90%;
     height: 500px;  
     margin: 0 auto; 
@@ -78,9 +78,18 @@ textarea {
 .splitSection {
     display: flex;
 
+    @include forPhone {
+        display: block;
+    }
+
     .imageSplit {
         width: calc(50% - 40px);
         margin: 0 20px;
+
+        @include forPhone {
+            width: 90%;
+            margin: 0 auto;
+        }
 
 
         img{
@@ -90,19 +99,33 @@ textarea {
     }
 
     .storedImageSection{
-        display: flex;
-        justify-content: center;
         height: 400px;
+
+        @include forPhone {
+            width:100%;
+            height: auto;
+            display: block;
+        }
 
     }
 
     .textSplit {
-        width: calc(50% - 40px);
+        width: calc(50%);
         margin: 0 20px;
+
+        @include forPhone {
+            width: 100%;
+            margin: 0;
+
+        }
         
         .storyContainer{
             height: 400px;
             text-align: left;
+
+            @include forPhone {
+                height: auto;
+            }
             p {
                 padding: 15px 25px;
             }
