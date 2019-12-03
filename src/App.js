@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import firebase from './firebase';
-import './styles/App.scss';
+import './styles/App.css';
 import MainSection from './MainSection';
 
 class App extends Component {
@@ -17,7 +17,6 @@ class App extends Component {
     return (
       <div className="App wrapper">
         <MainSection />
-        {/* add favicon */}
       </div>
     );
   }
