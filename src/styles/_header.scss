@@ -1,3 +1,5 @@
+// @import './mixins.scss';
+
 header {
     height: 100vh;
     display: flex;
@@ -21,10 +23,18 @@ header {
     height: 100vh;
     background: grey;
     overflow: scroll;
+
+    @include forTablet {
+        display: none;
+    }
 }
 
 .theRest {
     width: 67%;
+
+    @include forTablet {
+        width: 100%;    
+    }
     // position: fixed;
 
 }

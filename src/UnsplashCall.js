@@ -4,7 +4,6 @@ import firebase from 'firebase/app';
 import Images from './Images';
 import StoredImages from './StoredImages';
 import StorySection from './StorySection';
-// import Header from './Header';
 import InputSearch from './InputSearch';
 
 // To-Do: filter the selections by their height/widths?? and image types
@@ -129,9 +128,7 @@ class UnsplashCall extends Component {
                 "url": `https://api.unsplash.com/search/photos/?client_id=851ca0e417e4da7927bb7094b0bb790d78758e507f353acd3aaa66d2e6e48462&query=${this.state.inputToSearch}`,
                 "method": "GET",
                 params: {
-                    per_page: 20,
-                    // orientation: "squarish"
-                    // query: this.state.q
+                    per_page: 20
                 }
             }).then((response) => {
                 console.log(response)
