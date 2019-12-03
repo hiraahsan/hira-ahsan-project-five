@@ -1,0 +1,115 @@
+.wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+p {
+    margin: 0;
+}
+
+.imageSection {
+    overflow: scroll;
+    width: 90%;
+    height: 500px;  
+    margin: 0 auto; 
+    border-right: none;
+
+    a {
+        text-decoration: none;
+        color: inherit;
+        font-family: 'Roboto Condensed', sans-serif;
+        text-transform: uppercase;
+        background: white;
+        padding: 5px 10px;
+        margin-top: 25px;
+        display: inline-block;
+
+        &:hover {
+            background: inherit;
+            border: 2px solid white;
+            margin-top: 22px;
+        }
+
+    }
+
+    .imageContainer {
+        width: 7000px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .miniContainers {
+            margin: 0 20px;
+
+            img {
+                max-height:450px;
+            }
+        }
+    }
+}
+img {
+        max-width: 100%;
+        display: block;
+}
+
+textarea {
+    width: 50%;
+    height: 100px;
+}
+
+.storytime {
+    display: flex;
+
+    .imageStored {
+        width: 50%;
+        
+    }
+
+    .userText {
+        width: 50%;
+
+        p {
+            margin: 0;
+            padding: 0;
+        }   
+    }
+}
+
+.splitSection {
+    display: flex;
+
+    .imageSplit {
+        width: calc(50% - 40px);
+        margin: 0 20px;
+
+
+        img{
+            margin: 20px 0;
+            max-height: 400px;
+        }
+    }
+
+    .storedImageSection{
+        display: flex;
+        justify-content: center;
+        height: 400px;
+
+    }
+
+    .textSplit {
+        width: calc(50% - 40px);
+        margin: 0 20px;
+        
+        .storyContainer{
+            height: 400px;
+            text-align: left;
+            p {
+                padding: 15px 25px;
+            }
+        }
+    }
+}
+
+button {
+    background: inherit;
+}

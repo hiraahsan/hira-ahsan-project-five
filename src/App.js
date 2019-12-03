@@ -1,22 +1,32 @@
 import React, { Component } from 'react';
 import firebase from './firebase';
+// import SecondApiCall from './SecondApiCall';
 // import ImageSection from './ImageSection';
-import './App.css';
+// import axios from 'axios';
+import './styles/App.scss';
+// import ImageSection from './ImageSection';
+import UnsplashCall from './UnsplashCall';
 
 class App extends Component {
+
+  constructor() {
+    super();
+    this.state = {
+      dbRef: firebase.database().ref()
+    }
+  }
+
   render() {
+
     return (
-      <div className="App">
-        <header>
-          <h1>Writer's Block</h1>
-        </header>
+      <div className="App wrapper">
+        <UnsplashCall />
         {/* Insert instructions here
-        pop up?
+        as pop up?
         or <details> */}
-        {/* Create component for image sections */}
+        {/* add favicon */}
       </div>
     );
-
   }
 }
 
