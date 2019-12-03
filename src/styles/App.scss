@@ -1,11 +1,23 @@
 @import './_setup.scss';
+@import url('https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Boogaloo&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Crimson+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
 @import './_mixins.scss';
 @import './_main.scss';
 @import './imageSection.scss';
 @import './header.scss';
 
+html {
+  font-size: 62.5%;
+}
+
 .App {
   text-align: center;
+  // background: darken(#A8D0E6, 20%);
+  background: linear-gradient(45deg, #A8D0E6, #c2c2c2);
+  font-family: 'Crimson Pro', serif;
+  font-size: 2.5rem;
 }
 
 .App-header {

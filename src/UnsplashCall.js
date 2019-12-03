@@ -5,6 +5,8 @@ import Images from './Images';
 import StoredImages from './StoredImages';
 import StorySection from './StorySection';
 import InputSearch from './InputSearch';
+import Details from './Details';
+import Svg from './Svg';
 
 // To-Do: filter the selections by their height/widths?? and image types
 
@@ -42,12 +44,11 @@ class UnsplashCall extends Component {
                 order_by: "popular"
             }
         }).then( (response) => {
-            console.log(response)
             this.setState({
                 data: response.data
             })
         }).catch(error => {
-            console.log(error);
+            alert(error);
         })
 
         this.state.dbRefImages.on('value', (snapshot) => {
@@ -86,13 +87,10 @@ class UnsplashCall extends Component {
     }
 
     handleChange = () => {
-
         this.setState({
             imageToAppend: document.querySelector('input[name="radio"]:checked').value,
             idOfImage: document.querySelector('input[name="radio"]:checked').id
-        }
-        )
-
+        })
     }
 
     handleSubmitImage = (event) => {
@@ -116,35 +114,38 @@ class UnsplashCall extends Component {
 
     handleSubmitSearch = (event) => {
         event.preventDefault();
-        console.log(event)
-        this.setState({
-            q: this.state.inputToSearch
-        })
 
-        let callApi = () => {
-            axios({
-                "async": true,
-                "crossDomain": true,
-                "url": `https://api.unsplash.com/search/photos/?client_id=851ca0e417e4da7927bb7094b0bb790d78758e507f353acd3aaa66d2e6e48462&query=${this.state.inputToSearch}`,
-                "method": "GET",
-                params: {
-                    per_page: 20
-                }
-            }).then((response) => {
-                console.log(response)
-                this.setState({
-                    data: response.data.results
+        if(this.state.inputToSearch !== '') {
+
+            let callApi = () => {
+                axios({
+                    "async": true,
+                    "crossDomain": true,
+                    "url": `https://api.unsplash.com/search/photos/?client_id=851ca0e417e4da7927bb7094b0bb790d78758e507f353acd3aaa66d2e6e48462&query=${this.state.inputToSearch}`,
+                    "method": "GET",
+                    params: {
+                        per_page: 20
+                    }
+                }).then((response) => {
+                    console.log(response)
+                    this.setState({
+                        data: response.data.results
+                    })
+                }).catch(error => {
+                    console.log(error);
                 })
-            }).catch(error => {
-                console.log(error);
+            }
+            callApi();
+            this.setState({
+                inputToSearch: ''
             })
+        } else {
+            alert("Enter in a search term to continue!");
         }
-        callApi();
     }
 
     handleSubmit = (event) => {
         event.preventDefault();
-        // console.log('event', event.target);
 
         // and if statement, if both radio button is selected and text area is filled, the data will be pushed then
 
@@ -161,7 +162,7 @@ class UnsplashCall extends Component {
             }
         } else {
             console.log('this did not work')
-            alert('choose one!')
+            alert('Select an image and enter in text to continue!')
             // enter in error message function
         }
 
@@ -206,16 +207,20 @@ class UnsplashCall extends Component {
                 <div className="header-section">
                     <div className="oneThirdSection">
                         {this.state.imageArray.map((image, i) => (
-                        <a href={image.imageId}><img src={image.imageUrl}></img></a>
+                        <a href={image.imageId}><img alt="" src={image.imageUrl}></img></a>
                         ))}
                     </div>
 
                     <div className="theRest">
-                        <header>
-                            <h1>Writer's Block</h1>
-                        </header>
+
+                        <h1>Writer's Block</h1>
+
+                        <Svg />
+
                     </div>
                 </div>
+
+                <Details />
 
                 <InputSearch handleSearchImages={this.handleSearchImages} handleSubmitSearch={this.handleSubmitSearch} />
 
@@ -230,21 +235,14 @@ class UnsplashCall extends Component {
 
                     </div>
                     <div className="userInputSection">
-                        <textarea onChange={this.handleChangeInput} name="" id=""></textarea>
+                        <textarea onChange={this.handleChangeInput} name="" id="" maxLength="500"></textarea>
                         <button disabled={this.state.isButtonDisabled} type="submit">Submit text here</button>
                     </div>
                 </form>
                 <div className="splitSection clearfix">
                     <div className="imageSplit">{storedImages}</div>
                     <div className="textSplit">{storedText}</div>
-                    {/* <li><img id={this.state.id} src={this.state.storedImg}></img>
-                        <p id={this.state.storedTextId}>{this.state.storedText}</p>
-                    </li> */}
                 </div>
-                {/* <StorySection */}
-                {/* // appendImg={this.state.imageToAppend} */}
-                {/* // textToBeAppended={textToAppend} */}
-                {/* // /> */}
             </div>
         )
     }

@@ -29,11 +29,37 @@ header {
     }
 }
 
-.theRest {
-    width: 67%;
+h1 {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 7rem;
+    color: white;
+    text-shadow: 5px 2px black;
+    margin-top: 200px;
+    padding: 0 20px;
+    margin-bottom: 0;
 
     @include forTablet {
+        margin-top: 100px;
+            margin-bottom: 50px;
+
+    }
+
+    @include forPhone {
+        font-size: 5rem;
+        margin-top: 70px;
+    }
+}
+
+.theRest {
+    width: 67%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #A8D0E6;
+    @include forTablet {
         width: 100%;    
+
+        padding-bottom: 100px;
     }
     // position: fixed;
 
