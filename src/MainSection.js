@@ -8,8 +8,6 @@ import InputSearch from './InputSearch';
 import Details from './Details';
 import Svg from './Svg';
 
-// To-Do: filter the selections by their height/widths?? and image types
-
 class MainSection extends Component {
     constructor() {
         super();
@@ -127,7 +125,6 @@ class MainSection extends Component {
                 })
             }
             callApi();
-            // this.props.valueChange= "";
             this.setState({
                 inputToSearch: ''
             })
@@ -139,7 +136,6 @@ class MainSection extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
 
-        // and if statement, if both radio button is selected and text area is filled, the data will be pushed then
 
         if (this.state.userInput !== '') {
 
@@ -155,7 +151,6 @@ class MainSection extends Component {
         } else {
             console.log('this did not work')
             alert('Select an image and enter in text to continue!')
-            // enter in error message function
         }
 
     }
