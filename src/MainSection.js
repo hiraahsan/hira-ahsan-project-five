@@ -207,14 +207,15 @@ class MainSection extends Component {
                 
                 <div className="header-section">
                 <div className="previewSection"> {previewImages} </div>
-                        <h1>Writer's Block</h1>
+                        <div className="innerHeader"><h1>Writer's Block</h1>
 
                         <Svg />
+                        </div>
                 </div>
 
                 <Details />
 
-                <InputSearch handleSearchImages={this.handleSearchImages} handleSubmitSearch={this.handleSubmitSearch} />
+                <InputSearch inputToSearch={this.state.inputToSearch} handleSearchImages={this.handleSearchImages} handleSubmitSearch={this.handleSubmitSearch} />
 
                 <form onSubmit={this.handleSubmit}>
                     <div className="imageSection">

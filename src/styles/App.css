@@ -652,9 +652,7 @@ h1 {
   font-size: 7rem;
   color: white;
   text-shadow: 5px 2px black;
-  margin-top: 200px;
   padding: 0 20px;
-  margin-bottom: 20px;
 }
 
 @media (max-width: 900px) {
@@ -688,12 +686,7 @@ h1 {
   height: 100vh;
 }
 
-@media (max-width: 900px) {
-  .header-section {
-    width: 100%;
-    height: auto;
-  }
-}
+
 
 .footer-section {
   padding: 10px 0;
@@ -705,11 +698,49 @@ h1 {
   overflow: scroll;
   overflow-x: scroll;
   position: absolute;
+  width:30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   align-self: flex-start;
+  background: white;
+}
+
+.previewSection a {
+  display: flex;
+  justify-content: center;
+}
+
+.innerHeader {
+  width: 70%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  right:0;
+
 }
 
 .previewSection img {
   margin: 20px;
+  width: 75%;
+}
+
+@media (max-width: 900px) {
+  .header-section {
+    width: 100%;
+    height: auto;
+  }
+  .innerHeader {
+    position: static;
+    display: block;
+    height: auto;
+  }
+
+  .previewSection {
+    display: none;
+  }
 }
 
 html {
