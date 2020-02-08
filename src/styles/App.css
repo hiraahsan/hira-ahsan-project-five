@@ -224,6 +224,11 @@ input, textarea {
   margin: 10px 0;
 }
 
+input:focus, input:active {
+  background: white;
+  border: 2px inherit solid
+}
+
 textarea {
   max-width: 100%;
 }
@@ -688,6 +693,11 @@ h1 {
     width: 100%;
     height: auto;
   }
+}
+
+.footer-section {
+  padding: 10px 0;
+  background: #c2c2c2;
 }
 
 html {
