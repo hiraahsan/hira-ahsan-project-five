@@ -71,38 +71,35 @@ svg {
 }
 
 .shelf {
-    &:hover {
-        cursor: pointer;
+    cursor: pointer;
+    animation: bounce 0.4s ease;
+    animation-delay: 0.04s;
+    animation-iteration-count: 5;
+
+    &.bookOne {
+        animation: bounce 0.2s ease;
+        animation-delay: 0.04s;
+    }
+    
+    &~.bookTwo {
+        animation: bounce 0.6s ease;
+        animation-delay: 0.04s;
+    }
+
+    &~.bookThree {
+        animation: bounce 0.1s ease;
+        animation-delay: 0.04s;
+    }
+
+    &~.bookFour {
         animation: bounce 0.4s ease;
         animation-delay: 0.04s;
-        animation-iteration-count: 1;
-
-        &~.bookOne {
-            animation: bounce 0.2s ease;
-            animation-delay: 0.04s;
-        }
-        
-        &~.bookTwo {
-            animation: bounce 0.6s ease;
-            animation-delay: 0.04s;
-        }
-
-        &~.bookThree {
-            animation: bounce 0.1s ease;
-            animation-delay: 0.04s;
-        }
-
-        &~.bookFour {
-            animation: bounce 0.4s ease;
-            animation-delay: 0.04s;
-        }
-        
-
-        &~.bookshelf {
-    animation: lift 1s ease-in-out;
-    // animation-iteration-count: 1;
-    transform-origin: 30% 30%;
-  }
+    }
+    
+    &~.bookshelf {
+        animation: lift 1s ease-in-out;
+        // animation-iteration-count: 1;
+        transform-origin: 30% 30%;
     }
 
     

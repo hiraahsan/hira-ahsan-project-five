@@ -359,49 +359,59 @@ svg {
   }
 }
 
-.shelf:hover {
+.shelf {
   cursor: pointer;
-  -webkit-animation: bounce 0.4s ease;
-          animation: bounce 0.4s ease;
-  -webkit-animation-delay: 0.04s;
-          animation-delay: 0.04s;
-  -webkit-animation-iteration-count: 1;
-          animation-iteration-count: 1;
+  -webkit-animation: bounce 1s ease;
+          animation: bounce 1s ease;
+  /* -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s; */
+  -webkit-animation-iteration-count: 5;
+          animation-iteration-count: 5;
 }
 
-.shelf:hover ~ .bookOne {
-  -webkit-animation: bounce 0.2s ease;
-          animation: bounce 0.2s ease;
-  -webkit-animation-delay: 0.04s;
-          animation-delay: 0.04s;
+.shelf ~ .bookOne {
+  -webkit-animation: bounce 1s ease;
+          animation: bounce 1s ease;
+  -webkit-animation-delay: 0.1s;
+          animation-delay: 0.1s;
+          -webkit-animation-iteration-count: 5;
+          animation-iteration-count: 5;
 }
 
-.shelf:hover ~ .bookTwo {
-  -webkit-animation: bounce 0.6s ease;
-          animation: bounce 0.6s ease;
-  -webkit-animation-delay: 0.04s;
-          animation-delay: 0.04s;
+.shelf ~ .bookTwo {
+  -webkit-animation: bounce 1s ease;
+          animation: bounce 1s ease;
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+          -webkit-animation-iteration-count: 5;
+          animation-iteration-count: 5;
 }
 
-.shelf:hover ~ .bookThree {
-  -webkit-animation: bounce 0.1s ease;
-          animation: bounce 0.1s ease;
-  -webkit-animation-delay: 0.04s;
-          animation-delay: 0.04s;
+.shelf ~ .bookThree {
+  -webkit-animation: bounce 1s ease;
+          animation: bounce 1s ease;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+          -webkit-animation-iteration-count: 5;
+          animation-iteration-count: 5;
 }
 
-.shelf:hover ~ .bookFour {
-  -webkit-animation: bounce 0.4s ease;
-          animation: bounce 0.4s ease;
-  -webkit-animation-delay: 0.04s;
-          animation-delay: 0.04s;
+.shelf ~ .bookFour {
+  -webkit-animation: bounce 1s ease;
+          animation: bounce 1s ease;
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+          -webkit-animation-iteration-count: 5;
+          animation-iteration-count: 5;
 }
 
-.shelf:hover ~ .bookshelf {
+.shelf ~ .bookshelf {
   -webkit-animation: lift 1s ease-in-out;
           animation: lift 1s ease-in-out;
   -webkit-transform-origin: 30% 30%;
           transform-origin: 30% 30%;
+          -webkit-animation-iteration-count: 5;
+          animation-iteration-count: 5;
 }
 
 button {
@@ -425,7 +435,8 @@ p {
 }
 
 .imageSection {
-  overflow: overlay;
+  overflow: scroll;
+  overflow-y: hidden;
   width: 90%;
   height: 500px;
   margin: 0 auto;
@@ -440,13 +451,13 @@ p {
   background: white;
   padding: 5px 10px;
   margin-top: 25px;
+  border: 2px solid white;
   display: inline-block;
 }
 
 .imageSection a:hover {
   background: inherit;
   border: 2px solid white;
-  margin-top: 22px;
 }
 
 .imageSection .imageContainer {
@@ -476,8 +487,9 @@ img {
 }
 
 textarea {
-  width: 50%;
+  width: 80%;
   height: 100px;
+  resize: none;
 }
 
 .storytime {
@@ -508,6 +520,10 @@ textarea {
 @media (max-width: 599px) {
   .splitSection {
     display: block;
+  }
+
+  textarea {
+    width: 90%;
   }
 }
 
@@ -575,7 +591,6 @@ button {
 }
 
 header {
-  /* height: 100vh; */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -599,11 +614,6 @@ header {
   }
 }
 
-/* .header-section {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-} */
 
 .oneThirdSection {
   width: 33%;
@@ -662,12 +672,13 @@ h1 {
       -ms-flex-align: center;
           align-items: center;
   background: #A8D0E6;
+  height: 100vh;
 }
 
 @media (max-width: 900px) {
   .header-section {
     width: 100%;
-    padding-bottom: 100px;
+    height: auto;
   }
 }
 
