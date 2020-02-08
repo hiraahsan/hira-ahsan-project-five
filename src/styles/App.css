@@ -700,6 +700,18 @@ h1 {
   background: #c2c2c2;
 }
 
+.previewSection {
+  height: 100vh;
+  overflow: scroll;
+  overflow-x: scroll;
+  position: absolute;
+  align-self: flex-start;
+}
+
+.previewSection img {
+  margin: 20px;
+}
+
 html {
   font-size: 62.5%;
 }

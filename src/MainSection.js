@@ -7,6 +7,8 @@ import StorySection from './StorySection';
 import InputSearch from './InputSearch';
 import Details from './Details';
 import Svg from './Svg';
+import Preview from './Preview';
+
 
 class MainSection extends Component {
     constructor() {
@@ -165,6 +167,18 @@ class MainSection extends Component {
                 id={image.imageId}
                 key={i}
             />
+
+            
+        ))
+
+        const previewImages = this.state.imageArray.map((image, i) => (
+            <Preview
+                storedImg={image.imageUrl}
+                id={image.imageId}
+                key={i}
+            />
+            
+            
         ))
         
         const storedText = this.state.textArray.map((text, i) => (
@@ -190,8 +204,9 @@ class MainSection extends Component {
 
         return (
             <div className="App">
-
+                
                 <div className="header-section">
+                <div className="previewSection"> {previewImages} </div>
                         <h1>Writer's Block</h1>
 
                         <Svg />
