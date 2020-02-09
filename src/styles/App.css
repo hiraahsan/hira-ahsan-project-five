@@ -352,8 +352,6 @@ details li {
 }
 
 svg {
-  /* width: 100%; */
-  /* max-width: 50%; */
   max-height: 400px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -375,8 +373,6 @@ svg {
   cursor: pointer;
   -webkit-animation: bounce 1s ease;
           animation: bounce 1s ease;
-  /* -webkit-animation-delay: 0.4s;
-          animation-delay: 0.4s; */
   -webkit-animation-iteration-count: 5;
           animation-iteration-count: 5;
 }
@@ -491,7 +487,7 @@ p {
 }
 
 .imageSection .imageContainer .miniContainers img {
-  max-height: 450px;
+  max-height: 410px;
 }
 
 img {
@@ -695,8 +691,8 @@ h1 {
 
 .previewSection {
   height: 100vh;
-  overflow: scroll;
-  overflow-x: scroll;
+  overflow: overlay;
+  overflow-x: hidden;
   position: absolute;
   width:30%;
   display: flex;
