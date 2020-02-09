@@ -20,13 +20,18 @@ class MainSection extends Component {
             mappedArray: [],
             imageArray: [],
             textArray: [],
+            altArray: [],
             imageToAppend: '',
             userInput: '',
             inputToSearch: '',
             mappedDbref: '',
+            textToAppend: '',
             isButtonDisabled: false,
+            altText: '',
             dbRefImages: firebase.database().ref('/images'),
-            dbRefText: firebase.database().ref('/text')
+            dbRefText: firebase.database().ref('/text'),
+            dbRefAlt: firebase.database().ref('/alt')
+
         }
     }
 
@@ -78,8 +83,27 @@ class MainSection extends Component {
                 newStories.push(individualStories);
             }
 
+            // add in alt tag for firebase for an array
+
             this.setState({
                 textArray: newStories
+            })
+        })
+
+        this.state.dbRefAlt.on('value', (snapshot) => {
+            const individualAlt = snapshot.val();
+            const newAltText = []
+
+            for (let key in individualAlt) {
+                const altText = {
+                    altId: key,
+                    altText: individualAlt[key]
+                }
+                newAltText.push(altText);
+            }
+
+            this.setState({
+                altArray: newAltText
             })
         })
     }
@@ -87,8 +111,11 @@ class MainSection extends Component {
     handleChange = () => {
         this.setState({
             imageToAppend: document.querySelector('input[name="radio"]:checked').value,
-            idOfImage: document.querySelector('input[name="radio"]:checked').id
+            idOfImage: document.querySelector('input[name="radio"]:checked').id,
+            altText: document.querySelector('input[name="radio"]:checked').alt
         })
+
+        // console.log(document.querySelector('input[name="radio"]:checked').alt);
     }
 
     handleChangeInput = (event) => {
@@ -118,12 +145,11 @@ class MainSection extends Component {
                         per_page: 20
                     }
                 }).then((response) => {
-                    console.log(response)
                     this.setState({
                         data: response.data.results
                     })
                 }).catch(error => {
-                    console.log(error);
+                    alert(error)
                 })
             }
             callApi();
@@ -138,20 +164,19 @@ class MainSection extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
 
-
+        // error handling
         if (this.state.userInput !== '') {
 
             if (this.state.imageToAppend !== '') {
-                console.log('input has registered');
                 this.state.dbRefText.push(this.state.userInput);
                 this.state.dbRefImages.push(this.state.imageToAppend);
+                this.state.dbRefAlt.push(this.state.altText);
 
                 this.setState({
-                    isButtonDisabled: true
+                    userInput: ''
                 })
             }
         } else {
-            console.log('this did not work')
             alert('Select an image and enter in text to continue!')
         }
 
@@ -180,6 +205,13 @@ class MainSection extends Component {
             
             
         ))
+
+        // const alternative = this.state.altArray.map((alt, i) => (
+        //     <Preview
+        //         alt={alt.altText}
+        //         id={alt.altId}
+        //     />
+        // ))
         
         const storedText = this.state.textArray.map((text, i) => (
                 <StorySection
@@ -228,7 +260,7 @@ class MainSection extends Component {
 
                     </div>
                     <div className="userInputSection">
-                        <textarea onChange={this.handleChangeInput} placeholder="Start writing your story here! For example: You hear a knock on the door. You open it and you see a white haired man dressed like a wizard on your porch, in the middle of July. He says his name is Albus Dumbledore and he's come to take your daughter to a boarding school for witches and wizards." maxLength="500"></textarea>
+                        <textarea onChange={this.handleChangeInput} placeholder="Start writing your story here! For example: You hear a knock on the door. You open it and you see a white haired man dressed like a wizard on your porch, in the middle of July. He says his name is Albus Dumbledore and he's come to take your daughter to a boarding school for witches and wizards." maxLength="500" value={this.state.userInput} ></textarea>
                         <button disabled={this.state.isButtonDisabled} type="submit">Submit text here</button>
                     </div>
                 </form>
