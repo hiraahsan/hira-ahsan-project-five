@@ -143,8 +143,8 @@ input[type=checkbox], input[type=radio] {
 input[type=radio]:checked ~ label img {
   padding: 20px;
   background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
-  height: calc(auto - 20px);
-  width: calc(auto - 20px)
+  /* height: calc(auto - 20px);
+  width: calc(auto - 20px) */
 }
 
 input[type=search] {
