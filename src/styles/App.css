@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css?family=Boogaloo&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Crimson+Pro&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap");
-article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary {
+article, aside, figcaption, figure, footer, header, hgroup, nav, section {
   display: block;
 }
 
@@ -368,8 +368,8 @@ svg {
     max-width: 70%;
   }
 }
-
-.shelf {
+/* 
+.shelf:hover {
   cursor: pointer;
   -webkit-animation: bounce 1s ease;
           animation: bounce 1s ease;
@@ -404,7 +404,7 @@ svg {
           animation-iteration-count: 5;
 }
 
-.shelf ~ .bookFour {
+.shelf ~ .bookFour{
   -webkit-animation: bounce 1s ease;
           animation: bounce 1s ease;
   -webkit-animation-delay: 0.4s;
@@ -413,14 +413,60 @@ svg {
           animation-iteration-count: 5;
 }
 
-.shelf ~ .bookshelf {
+.shelf ~ .bookshelf, .shelf:hover ~ .bookshelf {
   -webkit-animation: lift 1s ease-in-out;
           animation: lift 1s ease-in-out;
   -webkit-transform-origin: 30% 30%;
           transform-origin: 30% 30%;
           -webkit-animation-iteration-count: 5;
           animation-iteration-count: 5;
+} */
+
+.shelf:hover {
+  cursor: pointer;
+  -webkit-animation: bounce 0.4s ease;
+          animation: bounce 0.4s ease;
+  -webkit-animation-delay: 0.04s;
+          animation-delay: 0.04s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
 }
+
+.shelf:hover ~ .bookOne {
+  -webkit-animation: bounce 0.2s ease;
+          animation: bounce 0.2s ease;
+  -webkit-animation-delay: 0.04s;
+          animation-delay: 0.04s;
+}
+
+.shelf:hover ~ .bookTwo {
+  -webkit-animation: bounce 0.6s ease;
+          animation: bounce 0.6s ease;
+  -webkit-animation-delay: 0.04s;
+          animation-delay: 0.04s;
+}
+
+.shelf:hover ~ .bookThree {
+  -webkit-animation: bounce 0.1s ease;
+          animation: bounce 0.1s ease;
+  -webkit-animation-delay: 0.04s;
+          animation-delay: 0.04s;
+}
+
+.shelf:hover ~ .bookFour {
+  -webkit-animation: bounce 0.4s ease;
+          animation: bounce 0.4s ease;
+  -webkit-animation-delay: 0.04s;
+          animation-delay: 0.04s;
+}
+
+.shelf:hover ~ .bookshelf {
+  -webkit-animation: lift 1s ease-in-out;
+          animation: lift 1s ease-in-out;
+  -webkit-transform-origin: 30% 30%;
+          transform-origin: 30% 30%;
+}
+
 
 button {
   font-family: 'Boogaloo', cursive;
@@ -428,7 +474,7 @@ button {
   border: 1px solid white;
 }
 
-button:hover {
+button:hover, button:focus, button:active{
   background: white;
   border: 1px solid lightblue;
 }
@@ -499,6 +545,10 @@ textarea {
   width: 80%;
   height: 100px;
   resize: none;
+}
+
+textarea:focus, textarea:active {
+  background: white;
 }
 
 .storytime {
@@ -736,6 +786,18 @@ h1 {
 
   .previewSection {
     display: none;
+  }
+}
+
+@media (min-width: 1800px) {
+  .header-section {
+    height: auto;
+  }
+
+  .innerHeader {
+    height: auto;
+    position: static;
+    display: block;
   }
 }
 
