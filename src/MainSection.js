@@ -238,7 +238,7 @@ class MainSection extends Component {
             <div className="App">
                 
                 <div className="header-section">
-                <div className="previewSection"> {previewImages} </div>
+                {/* <div className="previewSection"> {previewImages} </div> */}
                         <div className="innerHeader"><h1>Writer's Block</h1>
 
                         <Svg />
